@@ -12,6 +12,18 @@ with
 orders as (
     select * from {{ ref('stg_tpch__orders') }}
     -- place union here
+    union all
+    select
+    60000001
+    ,38449
+    ,'F'
+    ,'Fulfiled'
+    ,26745.10
+    ,'2016-01-10'
+    ,'4-NOT SPECIFIED'
+    ,'Clerk#000000154'
+    ,0
+    ,'none'
 ),
 
 customers as (
@@ -63,3 +75,5 @@ enriched as (
 )
 
 select * from enriched
+
+ 
