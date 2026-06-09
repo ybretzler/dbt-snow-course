@@ -160,3 +160,51 @@ sources:
             tests: [not_null]
           - name: R_COMMENT
             description: Free-text comment.
+
+      # ── LINEITEM ────────────────────────────────────────────────────────────
+      - name: lineitem
+        description: One row per order line item. Each order can have multiple line items. This is the most granular table in TPC-H.
+        columns:
+        - name: L_ORDERKEY
+          description: L_ORDERKEY - Foreign key to ORDERS.O_ORDERKEY. - test for not_null and relationship to source('tpch', 'orders') on field O_Orderkey
+          tests:               
+            - not_null
+            - relationships:
+                to: source('tpch', 'orders')
+                field: O_Orderkey
+        - name: L_PARTKEY
+          description: L_PARTKEY - Foreign key to PART.P_PARTKEY. - test for not_null 
+          tests: [not_null]
+        - name: L_SUPPKEY
+          description: L_SUPPKEY - Foreign key to SUPPLIER.S_SUPPKEY. - test for not_null
+          tests: [not_null]
+        - name: L_LINENUMBER
+          description: L_LINENUMBER - Position of this line within the order (1-indexed). - test for not_null 
+          tests: [not_null]
+        - name: L_QUANTITY
+          description: L_QUANTITY - Quantity of parts ordered on this line. - test for not_null
+          tests: [not_null]
+        - name: L_EXTENDEDPRICE
+          description: L_EXTENDEDPRICE - Extended price = quantity × unit price. - test for not_null
+          tests: [not_null]
+        - name: L_DISCOUNT
+          description: L_DISCOUNT - Discount fraction applied (0.00–0.10).
+        - name: L_TAX
+          description: L_TAX - Tax fraction applied.
+        - name: L_RETURNFLAG
+          description: L_RETURNFLAG - Return flag code (A, N, R).
+        - name: L_LINESTATUS
+          description: L_LINESTATUS - Line item status code (F, O).
+        - name: L_SHIPDATE
+          description: L_SHIPDATE - Date the line item was shipped.
+        - name: L_COMMITDATE
+          description: L_COMMITDATE - Date the line item was committed.
+        - name: L_RECEIPTDATE
+          description: L_RECEIPTDATE - Date the line item was received.
+        - name: L_SHIPINSTRUCT
+          description: L_SHIPINSTRUCT - Shipping instructions text.
+        - name: L_SHIPMODE
+          description: L_SHIPMODE - Shipping mode (AIR, TRUCK, SHIP, etc.).
+        - name: L_COMMENT
+          description: L_COMMENT - Free-text comment.
+        
