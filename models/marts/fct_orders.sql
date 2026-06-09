@@ -45,6 +45,9 @@ final as (
         -- Natural key
         o.order_id,
 
+        -- Surrogate key
+        {{dbt_utils.generate_surrogate_key(['o.order_id'])}} as order_sk,
+
         -- Dimensions
         o.customer_id,
         o.customer_name,

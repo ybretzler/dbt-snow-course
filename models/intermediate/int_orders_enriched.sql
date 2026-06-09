@@ -53,7 +53,9 @@ enriched as (
         year(o.order_date)          as order_year,
         month(o.order_date)         as order_month,
         quarter(o.order_date)       as order_quarter,
-        date_trunc('month', o.order_date)::date as order_month_start
+        date_trunc('month', o.order_date)::date as order_month_start,
+        {{ cents_to_dollars('order_total_price') }} as order_total_dollars,
+        {{current_timestamp_utc()}} as loaded_at
 
     from orders       o
     left join customers c on o.customer_id  = c.customer_id
