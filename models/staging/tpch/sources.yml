@@ -33,7 +33,7 @@ sources:
                   to: source('tpch', 'customer')
                   field: C_CUSTKEY
           - name: O_ORDERSTATUS
-            description: Single-character order status code.
+            description: ''
             tests:
               - not_null
               - accepted_values:

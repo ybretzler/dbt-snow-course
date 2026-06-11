@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  # ── fct_orders ──────────────────────────────────────────────────────
+  - name: fct_orders
+    description: ''
+    columns:
+      - name: order_id
+        description: Unique order identifier (natural PK from source).
+        tests: [not_null, unique]
+      - name: order_sk
+        description: Surrogate key.
+        tests: [not_null, unique]
